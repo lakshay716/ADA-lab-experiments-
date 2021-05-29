@@ -1,0 +1,65 @@
+class Mergesort
+{
+	int[] array;
+	int[] tempMergearr;
+	int length;
+	public static void main(String[] args) {
+		int[] arr={48,36,13,52,19,21};
+		Mergesort obj=new Mergesort();
+		obj.sort(arr);
+		for(int i:arr)
+		{
+			System.out.println(i+" ");
+		}
+	}
+	public void sort(int arr[])
+	{
+      this.array=arr;
+      this.length=arr.length;
+      this.tempMergearr=new int[length];
+      dividearray(0,length-1);
+
+	}
+	public void dividearray(int lowerindex, int higherindex)
+	{
+		if(lowerindex<higherindex)
+		{
+			int mid=lowerindex+(higherindex-lowerindex)/2;
+			dividearray(lowerindex,mid);
+			dividearray(mid+1,higherindex);
+            mergearray(lowerindex,mid,higherindex); 
+		}
+	}
+	public void mergearray(int lowerindex,int mid, int higherindex)
+	{
+		for(int i=lowerindex;i<=higherindex;i++)
+		{
+			tempMergearr[i]=array[i];
+
+		}
+		int i=lowerindex;
+		int j=mid+1;
+		int k=lowerindex;
+		while(i<=mid&&j<=higherindex)
+		{
+			if(tempMergearr[i]<=tempMergearr[j])
+			{
+				array[k]=tempMergearr[i];
+				i++;
+			}
+			else
+			{
+				array[k]=tempMergearr[j];
+				j++;
+			}
+			k++;
+		}
+		while(i<=mid)
+		{
+			array[k]=tempMergearr[i];
+			k++;
+			i++;
+		}
+	}
+
+}
