@@ -1,0 +1,22 @@
+import java.util.*;
+class Factorial
+{
+	static int fact=1;
+	public static void main(String[] args) {
+		int n=5;
+		Factorial f=new Factorial();
+		f.calculate(n);
+		System.out.println("Factorial of the number entered is"+fact);
+
+	}
+	int calculate(int n)
+	{
+		if(n>=1)
+		{
+			fact=fact*n;
+		
+		    calculate(n-1);
+	    }
+	    return 0;
+	}
+}
